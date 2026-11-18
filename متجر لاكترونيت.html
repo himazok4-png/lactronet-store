@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>متجر لاكترونيت</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F5F9;--card:#FFFFFF;--ink:#101828;--muted:#5B6678;--line:#DDE2EB;--blue:#2438FF;--on-blue:#FFFFFF;--coral:#FF5A3C;--tile:#E8ECFF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C111C;--card:#141B2A;--ink:#EAEFF8;--muted:#98A3B8;--line:#26304A;--blue:#6C7BFF;--on-blue:#0C111C;--coral:#FF7A5F;--tile:#1C2542;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0C111C;--card:#141B2A;--ink:#EAEFF8;--muted:#98A3B8;--line:#26304A;--blue:#6C7BFF;--on-blue:#0C111C;--coral:#FF7A5F;--tile:#1C2542;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;line-height:1.7}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:30}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+h1,h2,h3,.brand{font-family:"Readex Pro","IBM Plex Sans Arabic",sans-serif;margin:0;line-height:1.2}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1rem,4vw,2rem)}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:1rem;height:68px}
+.brand{font-weight:700;font-size:1.5rem;color:var(--blue);text-decoration:none;margin-inline-end:auto}
+.nav{display:flex;gap:1.3rem;font-size:.95rem}
+.nav a{text-decoration:none;color:var(--muted)}.nav a:hover{color:var(--ink)}
+@media (max-width:680px){.nav{display:none}}
+.ibtn{position:relative;border:1px solid var(--line);background:var(--bg);width:44px;height:44px;border-radius:12px;cursor:pointer;font-size:1.15rem}
+.badge{position:absolute;top:-6px;inset-inline-start:-6px;background:var(--coral);color:#fff;border-radius:999px;min-width:21px;height:21px;font-size:.75rem;display:grid;place-items:center;padding:0 5px}
+
+.hero{padding:clamp(2.5rem,7vw,5rem) 0 2rem}
+.hero h1{font-size:clamp(2.1rem,6.2vw,4.4rem);font-weight:700;letter-spacing:-.01em;max-width:16ch}
+.hero p{color:var(--muted);font-size:1.15rem;max-width:46ch;margin:1.1rem 0 1.8rem}
+.search{display:flex;max-width:620px;background:var(--card);border:2px solid var(--ink);border-radius:16px;overflow:hidden}
+.search input{flex:1;border:0;background:transparent;padding:1rem 1.2rem;min-width:0}
+.search input:focus-visible{outline:none}
+.search:focus-within{border-color:var(--blue);box-shadow:0 0 0 4px color-mix(in srgb,var(--blue) 22%,transparent)}
+.search button{border:0;background:var(--blue);color:var(--on-blue);padding:0 1.5rem;font-weight:600;cursor:pointer}
+
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.9rem;margin:2rem 0 1rem}
+.perk{display:flex;gap:.8rem;align-items:center;padding:1rem 1.2rem;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.perk span{font-size:1.6rem}.perk b{display:block;font-weight:600}.perk small{color:var(--muted)}
+
+.bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:2.2rem 0 1.2rem}
+.chip{border:1px solid var(--line);background:var(--card);padding:.5rem 1.1rem;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+select{margin-inline-start:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.5rem .8rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:1.1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:.8rem;display:flex;flex-direction:column}
+.pic{position:relative;aspect-ratio:1/.8;background:var(--tile);border-radius:14px;display:grid;place-items:center;font-size:4rem}
+.sale{position:absolute;top:.6rem;inset-inline-start:.6rem;background:var(--coral);color:#fff;font-size:.78rem;font-weight:600;padding:.1rem .6rem;border-radius:999px}
+.card h3{font-size:1.05rem;margin:.9rem .3rem .1rem}
+.card .cat{color:var(--muted);font-size:.85rem;margin:0 .3rem}
+.price{margin:.5rem .3rem 0;font-family:"Readex Pro",sans-serif;font-weight:600;font-size:1.2rem}
+.price s{color:var(--muted);font-weight:400;font-size:.9rem;margin-inline-start:.5rem}
+.add{margin:.8rem .3rem .3rem;border:0;background:var(--blue);color:var(--on-blue);border-radius:12px;padding:.7rem;font-weight:600;cursor:pointer}
+.add:hover{filter:brightness(1.1)}
+.empty{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--muted)}
+
+.cta{margin:4rem 0;background:var(--blue);color:var(--on-blue);border-radius:28px;padding:clamp(1.8rem,5vw,3.2rem);display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;justify-content:space-between}
+.cta h2{font-size:clamp(1.4rem,3.4vw,2.2rem)}
+.cta a{background:var(--on-blue);color:var(--blue);text-decoration:none;font-weight:600;padding:.9rem 1.8rem;border-radius:14px}
+footer{border-top:1px solid var(--line);padding:2rem 0 3rem;color:var(--muted);font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+
+.shade{position:fixed;inset:0;background:rgba(8,12,24,.5);z-index:40;display:none}
+.shade.on{display:block}
+aside{position:fixed;top:0;bottom:0;inset-inline-end:0;width:min(420px,100%);background:var(--card);z-index:50;display:flex;flex-direction:column;padding:calc(1rem + env(safe-area-inset-top,0px)) 1.2rem calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-105%);transition:transform .3s}
+aside.on{transform:none}
+aside header{position:static;display:flex;justify-content:space-between;align-items:center;border:0;padding-bottom:.8rem}
+.lines{flex:1;overflow:auto;border-top:1px solid var(--line)}
+.line{display:grid;grid-template-columns:52px 1fr auto;gap:.8rem;align-items:center;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.line .t{background:var(--tile);border-radius:10px;height:52px;display:grid;place-items:center;font-size:1.6rem}
+.line b{font-weight:600;display:block;line-height:1.3}.line small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:.4rem}
+.qty button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--bg);cursor:pointer}
+.total{display:flex;justify-content:space-between;font-weight:600;font-size:1.15rem;padding:1rem 0 .8rem}
+.wa{display:block;text-align:center;text-decoration:none;background:#1FA855;color:#fff;font-weight:600;padding:.9rem;border-radius:14px}
+.wa[aria-disabled="true"]{opacity:.4;pointer-events:none}
+@media (prefers-reduced-motion:reduce){aside{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">لاكترونيت</a>
+    <nav class="nav" aria-label="القائمة"><a href="#shop">المنتجات</a><a href="#perks">المميزات</a><a href="#contact">تواصل</a></nav>
+    <button class="ibtn" id="theme" aria-label="تبديل الوضع الداكن">◐</button>
+    <button class="ibtn" id="open" aria-label="فتح السلة">🛒<span class="badge" id="count">0</span></button>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero">
+    <h1>إلكترونيات أصلية بأسعار واضحة</h1>
+    <p>موبايلات ولابتوبات وسماعات وإكسسوارات بضمان حقيقي، وشحن لباب البيت.</p>
+    <form class="search" id="sform" role="search"><input id="q" type="search" placeholder="ابحث عن منتج، مثلًا: سماعة" aria-label="بحث"><button type="submit">بحث</button></form>
+  </section>
+
+  <div class="perks" id="perks">
+    <div class="perk"><span>🚚</span><div><b>شحن سريع</b><small>توصيل خلال 1 إلى 3 أيام</small></div></div>
+    <div class="perk"><span>🛡️</span><div><b>ضمان سنة</b><small>على كل المنتجات</small></div></div>
+    <div class="perk"><span>💵</span><div><b>دفع عند الاستلام</b><small>افحص المنتج ثم ادفع</small></div></div>
+    <div class="perk"><span>💬</span><div><b>دعم واتساب</b><small>رد سريع كل يوم</small></div></div>
+  </div>
+
+  <section id="shop">
+    <div class="bar" id="chips"></div>
+    <div class="bar" style="margin-top:0"><span id="found" style="color:var(--muted)"></span>
+      <select id="sort" aria-label="الترتيب"><option value="0">الأحدث</option><option value="1">الأقل سعرًا</option><option value="2">الأعلى سعرًا</option></select></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h2>محتاج مساعدة في الاختيار؟</h2>
+    <a href="https://wa.me/201000000000" target="_blank" rel="noopener">كلمنا على واتساب</a>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 متجر لاكترونيت</span><span>جميع الأسعار بالجنيه المصري</span></div></footer>
+
+<div class="shade" id="shade"></div>
+<aside id="cart" aria-label="سلة المشتريات" aria-hidden="true">
+  <header><h2>سلتك</h2><button class="ibtn" id="close" aria-label="إغلاق">✕</button></header>
+  <div class="lines" id="lines"></div>
+  <div class="total"><span>الإجمالي</span><span id="sum">0</span></div>
+  <a class="wa" id="wa" href="#" target="_blank" rel="noopener" aria-disabled="true">إتمام الطلب عبر واتساب</a>
+</aside>
+
+<script>
+var PHONE="201000000000";
+var P=[
+ {id:1,n:"موبايل Nova X5",c:"موبايلات",p:14500,o:16900,e:"📱"},
+ {id:2,n:"لابتوب Aero 14 بوصة",c:"لابتوبات",p:28900,o:0,e:"💻"},
+ {id:3,n:"سماعة لاسلكية Pulse",c:"سماعات",p:1850,o:2300,e:"🎧"},
+ {id:4,n:"ساعة ذكية Orbit",c:"ساعات ذكية",p:2650,o:0,e:"⌚"},
+ {id:5,n:"موبايل Nova Lite",c:"موبايلات",p:7200,o:0,e:"📲"},
+ {id:6,n:"باور بانك 20000",c:"إكسسوارات",p:790,o:950,e:"🔋"},
+ {id:7,n:"ماوس لاسلكي Glide",c:"إكسسوارات",p:420,o:0,e:"🖱️"},
+ {id:8,n:"سماعة ألعاب Core",c:"سماعات",p:1290,o:0,e:"🎮"}
+];
+var cats=["الكل"].concat(P.map(function(x){return x.c}).filter(function(v,i,a){return a.indexOf(v)===i}));
+var cat="الكل",cart={};
+try{cart=JSON.parse(localStorage.getItem("lc")||"{}")||{}}catch(e){cart={}}
+var $=function(i){return document.getElementById(i)};
+var f=function(n){return n.toLocaleString("en-US")+" ج.م"};
+function save(){try{localStorage.setItem("lc",JSON.stringify(cart))}catch(e){}}
+
+function chips(){$("chips").innerHTML=cats.map(function(c){return '<button class="chip" aria-pressed="'+(c===cat)+'" data-c="'+c+'">'+c+'</button>'}).join("")}
+function shop(){
+  var q=$("q").value.trim(),s=+$("sort").value;
+  var r=P.filter(function(x){return(cat==="الكل"||x.c===cat)&&(!q||(x.n+x.c).indexOf(q)>-1)});
+  if(s===1)r.sort(function(a,b){return a.p-b.p});if(s===2)r.sort(function(a,b){return b.p-a.p});
+  $("found").textContent=r.length+" منتج";
+  $("grid").innerHTML=r.length?r.map(function(x){
+    return '<article class="card"><div class="pic" aria-hidden="true">'+x.e+(x.o?'<span class="sale">خصم '+Math.round((1-x.p/x.o)*100)+'%</span>':'')+'</div><h3>'+x.n+'</h3><p class="cat">'+x.c+'</p><div class="price">'+f(x.p)+(x.o?'<s>'+f(x.o)+'</s>':'')+'</div><button class="add" data-a="'+x.id+'">أضف للسلة</button></article>'}).join(""):'<p class="empty">ما فيش منتجات بالاسم ده. جرّب كلمة تانية.</p>';
+}
+function draw(){
+  var ids=Object.keys(cart).filter(function(k){return cart[k]>0}),sum=0,n=0,msg=["مرحبًا، أريد طلب:"];
+  $("lines").innerHTML=ids.length?ids.map(function(k){var x=P.filter(function(y){return y.id==k})[0];if(!x)return"";
+    sum+=x.p*cart[k];n+=cart[k];msg.push("- "+x.n+" × "+cart[k]);
+    return '<div class="line"><div class="t">'+x.e+'</div><div><b>'+x.n+'</b><small>'+f(x.p)+'</small></div><div class="qty"><button data-m="'+k+'" aria-label="تقليل">−</button><span>'+cart[k]+'</span><button data-p="'+k+'" aria-label="زيادة">+</button></div></div>'}).join(""):'<p class="empty">السلة فاضية. أضف منتجًا للبدء.</p>';
+  $("count").textContent=n;$("sum").textContent=f(sum);
+  msg.push("الإجمالي: "+f(sum));
+  var w=$("wa");w.setAttribute("aria-disabled",ids.length?"false":"true");
+  w.href=ids.length?"https://wa.me/"+PHONE+"?text="+encodeURIComponent(msg.join("\n")):"#";
+  save();
+}
+function pane(on){$("cart").classList.toggle("on",on);$("shade").classList.toggle("on",on);$("cart").setAttribute("aria-hidden",!on);if(on)$("close").focus()}
+document.addEventListener("click",function(e){
+  var t=e.target.closest("button");if(!t)return;
+  if(t.dataset.c){cat=t.dataset.c;chips();shop()}
+  if(t.dataset.a){cart[t.dataset.a]=(cart[t.dataset.a]||0)+1;draw();pane(true)}
+  if(t.dataset.p){cart[t.dataset.p]++;draw()}
+  if(t.dataset.m){cart[t.dataset.m]--;draw()}
+});
+$("open").onclick=function(){pane(true)};$("close").onclick=function(){pane(false)};$("shade").onclick=function(){pane(false)};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")pane(false)});
+$("sform").onsubmit=function(e){e.preventDefault();shop();$("shop").scrollIntoView()};
+$("q").oninput=shop;$("sort").onchange=shop;
+$("theme").onclick=function(){var d=document.documentElement,dark=getComputedStyle(d).colorScheme==="dark";d.setAttribute("data-theme",dark?"light":"dark")};
+chips();shop();draw();
+</script>
+</body>
+</html>
